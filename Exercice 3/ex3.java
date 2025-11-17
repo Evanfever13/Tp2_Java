@@ -35,7 +35,7 @@ public class ex3 {
                 System.out.println("Ordinateur enlève: " + ordinateur);
 
                 if (debut <= 1) {
-                    System.out.println("Ordinateur a gagné :-(");
+                    System.out.println("Ordinateur a gagné :-)");
                     System.out.println(nom + " a perdu :-(");
                     break;
                 }
