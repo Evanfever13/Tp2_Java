@@ -1,8 +1,10 @@
+package Exercice_2;
+
 public class ex2 {
-    public static void main(String[] args) {
-        if (args == null || args.length != 1 || args[0] == "0")
+    public static void main(int n) {
+        if (n == 0)
             return;
-        System.out.println(Fibonacci(Integer.parseInt(args[0])+1)/Fibonacci(Integer.parseInt(args[0])));
+        System.out.println(Fibonacci(n+1)/Fibonacci(n));
         System.out.println(GoldenRatio());
     }
     public static int Fibonacci(int n) {
