@@ -1,3 +1,4 @@
+package Exercice_5;
 public class ex5 {
     public static void main(String[] args) {
         Resultat r1 = new Resultat(120);
@@ -17,3 +18,4 @@ public class ex5 {
         System.out.println(j2);
     }
 }
+

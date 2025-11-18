@@ -1,4 +1,12 @@
+//import Exercice_1.ex1;
 import Exercice_2.ex2;
+//import Exercice_3.ex3;
+import Exercice_4.ex4;
+//import Exercice_5.ex5;
+import Exercice_6.ex6;
+//import Exercice_7.ex7;
+//import Exercice_8.ex8;
+//import Exercice_9.ex9;
 import java.util.Scanner;
 
 class Executable {
@@ -16,7 +24,9 @@ class Executable {
         System.out.print("9 : Afficher la carte\n");
         switch (scanner.next().charAt(0)) {
             case '1':
-                //ex1.main();
+                //System.out.print("Entrez un nombre : ");
+                //int n = scanner.nextInt();
+                //ex1.main(n);
                 break;
             case '2':
                 System.out.print("Entrez un nombre : ");
@@ -25,24 +35,24 @@ class Executable {
                 break;
             case '3':
                 //ex3.main();
-                break;  
+                break; 
             case '4':
-                //ex4.main();
+                ex4.main(new String[]{""});
                 break;
             case '5':
-                //ex4.main();
+                //ex5.main();
                 break;
             case '6':
-                //ex4.main();
+                ex6.main(new String[]{""});
                 break;
             case '7':
-                //ex4.main();
+                //ex7.main();
                 break;
             case '8':
-                //ex4.main();
+                //ex8.main();
                 break;
             case '9':
-                //ex4.main();
+                //ex9.main();
                 break;
         }
     }
