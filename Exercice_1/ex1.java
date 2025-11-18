@@ -1,7 +1,7 @@
+package Exercice_1;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
-package Exercice_1;
 public class ex1 {
     public static int fib(int n) {
         // programme de calcul du nombre de fibonacci

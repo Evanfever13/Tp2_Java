@@ -1,3 +1,5 @@
+package Exercice_5;
+
 public class Resultat {
     private int score;
 

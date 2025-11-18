@@ -1,3 +1,5 @@
+package Exercice_5;
+
 public class Joueur {
     private String a_nom;
     private String a_prenom;

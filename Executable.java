@@ -1,16 +1,17 @@
-//import Exercice_1.ex1;
+import Exercice_1.ex1;
 import Exercice_2.ex2;
-//import Exercice_3.ex3;
+import Exercice_3.ex3;
 import Exercice_4.ex4;
-//import Exercice_5.ex5;
+import Exercice_5.ex5;
 import Exercice_6.ex6;
-//import Exercice_7.ex7;
+import Exercice_7.ex7;
 //import Exercice_8.ex8;
 //import Exercice_9.ex9;
 import java.util.Scanner;
 
 class Executable {
     public static void main(String[] args) {
+        
         Scanner scanner = new Scanner(System.in);
         System.out.print("Quel Exercice ?: \n");
         System.out.print("1 : Fibonacci \n");
@@ -24,9 +25,7 @@ class Executable {
         System.out.print("9 : Afficher la carte\n");
         switch (scanner.next().charAt(0)) {
             case '1':
-                //System.out.print("Entrez un nombre : ");
-                //int n = scanner.nextInt();
-                //ex1.main(n);
+                ex1.main(new String[]{""});
                 break;
             case '2':
                 System.out.print("Entrez un nombre : ");
@@ -34,19 +33,19 @@ class Executable {
                 ex2.main(n);
                 break;
             case '3':
-                //ex3.main();
+                ex3.main(new String[]{""});
                 break; 
             case '4':
                 ex4.main(new String[]{""});
                 break;
             case '5':
-                //ex5.main();
+                ex5.main(new String[]{""});
                 break;
             case '6':
                 ex6.main(new String[]{""});
                 break;
             case '7':
-                //ex7.main();
+                ex7.main(new String[]{""});
                 break;
             case '8':
                 //ex8.main();
