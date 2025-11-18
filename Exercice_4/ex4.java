@@ -1,3 +1,5 @@
+package Exercice_4;
+
 class PCarte{
     class Carte{
         String a_valeur;
