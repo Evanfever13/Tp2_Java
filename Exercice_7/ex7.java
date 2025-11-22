@@ -1,74 +1,97 @@
 package Exercice_7;
+
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.*;
 
-public class ex7 {
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("Test des boutons");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(1650, 950);
-            frame.setLocationRelativeTo(null);
+// application swing démontrant deux styles de boutons avec effets visuels
+public class ex7 extends JFrame {
+    private static final Color FOND_PRINCIPAL = new Color(230, 240, 255);
+    private static final Color BLEU_CLAIR = new Color(100, 150, 255);
+    private static final Color BLEU_HOVER = new Color(70, 120, 230);
+    private static final Color ROSE_CLAIR = new Color(255, 120, 180);
+    private static final Color ROSE_HOVER = new Color(255, 80, 140);
 
-            frame.getContentPane().setBackground(new Color(230, 240, 255));
+    public ex7() {
+        configurerFenetre();
+        add(creerPanneauPrincipal());
+    }
 
-            JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 40, 40));
-            panel.setOpaque(false);
+    // configure les parametres de la fenetre principale
+    private void configurerFenetre() {
+        setTitle("Test des boutons");
+        setSize(800, 400);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        getContentPane().setBackground(FOND_PRINCIPAL);
+    }
 
-            JButton boutonSimple = new JButton("Bouton simple");
-            boutonSimple.setPreferredSize(new Dimension(200, 60));
-            boutonSimple.setFont(new Font("Arial", Font.BOLD, 18));
-            boutonSimple.setBackground(new Color(180, 220, 255));
+    // cree le panneau principal contenant les boutons
+    private JPanel creerPanneauPrincipal() {
+        JPanel panel = new JPanel(new GridBagLayout());
+        panel.setOpaque(false);
+        
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(10, 15, 10, 15);
+        
+        panel.add(creerBouton("Bouton Simple", BLEU_CLAIR, BLEU_HOVER, new Font("Arial", Font.BOLD, 18)), gbc);
+        
+        gbc.gridx = 1;
+        panel.add(creerBouton("Bouton Fantaisie", ROSE_CLAIR, ROSE_HOVER, new Font("Segoe UI", Font.ITALIC, 18)), gbc);
 
-            JButton boutonFantaisie = new JButton("Bouton fantaisie");
-            boutonFantaisie.setPreferredSize(new Dimension(220, 70));
-            boutonFantaisie.setFont(new Font("Comic Sans MS", Font.ITALIC, 18));
-            boutonFantaisie.setBackground(new Color(255, 180, 200));
+        return panel;
+    }
 
-            boutonSimple.addActionListener(e -> {
-                JOptionPane.showMessageDialog(
-                    frame,
-                    "Vous avez appuyé sur : Bouton simple",
-                    "Information",
-                    JOptionPane.INFORMATION_MESSAGE
-                );
-            });
+    // cree un bouton stylise avec effet hover et action au clic
+    private JButton creerBouton(String texte, Color couleurNormale, Color couleurHover, Font police) {
+        JButton bouton = new JButton(texte);
+        bouton.setPreferredSize(new Dimension(220, 70));
+        bouton.setFont(police);
+        bouton.setBackground(couleurNormale);
+        bouton.setForeground(Color.WHITE);
+        bouton.setFocusPainted(false);
+        bouton.setBorderPainted(false);
+        bouton.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
-            boutonFantaisie.addActionListener(e -> {
-                JOptionPane.showMessageDialog(
-                    frame,
-                    "Vous avez appuyé sur : Bouton fantaisie",
-                    "Information",
-                    JOptionPane.INFORMATION_MESSAGE
-                );
-            });
+        // bordure arrondie avec effet d'ombre
+        bouton.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(couleurNormale.darker(), 2, true),
+            BorderFactory.createEmptyBorder(10, 20, 10, 20)
+        ));
 
-            // Effet de survol avec MouseListener
-            boutonFantaisie.addMouseListener(new MouseAdapter() {
-                public void mouseEntered(MouseEvent e) {
-                    boutonFantaisie.setBackground(new Color(255, 100, 150)); // couleur survol
-                }
-                public void mouseExited(MouseEvent e) {
-                    boutonFantaisie.setBackground(new Color(255, 180, 200)); // couleur normale
-                }
-            });
+        // action au clic
+        bouton.addActionListener(e -> 
+            JOptionPane.showMessageDialog(this, 
+                "Vous avez clique sur : " + texte, 
+                "Information", 
+                JOptionPane.INFORMATION_MESSAGE)
+        );
 
-            boutonSimple.addMouseListener(new MouseAdapter() {
-                public void mouseEntered(MouseEvent e) {
-                    boutonSimple.setBackground(new Color(255, 100, 150)); // couleur survol
-                }
-                public void mouseExited(MouseEvent e) {
-                    boutonSimple.setBackground(new Color(255, 180, 200)); // couleur normale
-                }
-            });
+        // effet hover
+        ajouterEffetHover(bouton, couleurNormale, couleurHover);
 
+        return bouton;
+    }
 
-            panel.add(boutonSimple);
-            panel.add(boutonFantaisie);
+    // ajoute un effet de survol qui change la couleur du bouton
+    private void ajouterEffetHover(JButton bouton, Color couleurNormale, Color couleurHover) {
+        bouton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                bouton.setBackground(couleurHover);
+            }
 
-            frame.add(panel);
-            frame.setVisible(true);
+            @Override
+            public void mouseExited(MouseEvent e) {
+                bouton.setBackground(couleurNormale);
+            }
         });
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new ex7().setVisible(true));
     }
 }
