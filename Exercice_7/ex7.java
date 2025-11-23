@@ -5,7 +5,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.*;
 
-// application swing démontrant deux styles de boutons avec effets visuels
+// application swing demontrant deux styles de boutons avec effets visuels
 public class ex7 extends JFrame {
     private static final Color FOND_PRINCIPAL = new Color(230, 240, 255);
     private static final Color BLEU_CLAIR = new Color(100, 150, 255);
@@ -22,7 +22,7 @@ public class ex7 extends JFrame {
     private void configurerFenetre() {
         setTitle("Test des boutons");
         setSize(800, 400);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         getContentPane().setBackground(FOND_PRINCIPAL);
     }

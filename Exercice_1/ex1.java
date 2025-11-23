@@ -11,21 +11,17 @@ public class ex1 {
     }
 
     public static void main(String[] args) {
-        // programme qui prend en compte l'entrée de l'utilisateur et lui trouve son nombre de fibonacci associé au nombre choisis
+        // programme qui prend en compte l'entree de l'utilisateur et lui trouve son nombre de fibonacci associe au nombre choisis
         Scanner input = new Scanner(System.in, StandardCharsets.UTF_8.name());
+        System.out.print("Entrez votre nombre: ");
+        String line = input.nextLine().trim();
+        int nombre;
         try {
-            System.out.print("Entrez votre nombre: ");
-            String line = input.nextLine().trim();
-            int nombre;
-            try {
-                nombre = Integer.parseInt(line);
-            } catch (NumberFormatException e) {
-                System.out.println("Entrée invalide, veuillez entrer un entier.");
-                return;
-            }
-            System.out.println("Fibonacci de " + nombre + " est " + fib(nombre) +" = F["+ nombre +"] = " + fib(nombre));
-        } finally {
-            input.close();
+            nombre = Integer.parseInt(line);
+        } catch (NumberFormatException e) {
+            System.out.println("Entree invalide, veuillez entrer un entier.");
+            return;
         }
+        System.out.println("Fibonacci de " + nombre + " est " + fib(nombre) +" = F["+ nombre +"] = " + fib(nombre));
     }
 }

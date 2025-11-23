@@ -47,13 +47,10 @@ class Executable {
         System.out.print("Votre choix : ");
     }
     
-    // lit le choix de l'utilisateur avec validation
+    // lit le choix de l'utilisateur avec validation (lit toute la ligne)
     private static String lireChoix(Scanner scanner) {
         try {
-            if (!scanner.hasNext()) {
-                return null;
-            }
-            String choix = scanner.next().trim();
+            String choix = scanner.nextLine().trim();
             
             if (choix.isEmpty()) {
                 System.out.println("Erreur : entrez un choix valide.");
@@ -80,16 +77,16 @@ class Executable {
                 case '2':
                     // demande un nombre pour cet exercice specifique
                     System.out.print("Entrez un nombre : ");
-                    if (scanner.hasNextInt()) {
-                        int n = scanner.nextInt();
+                    String line = scanner.nextLine().trim();
+                    try {
+                        int n = Integer.parseInt(line);
                         if (n < 0) {
                             System.out.println("Erreur : nombre doit etre positif.");
                         } else {
                             ex2.main(n);
                         }
-                    } else {
+                    } catch (NumberFormatException ex) {
                         System.out.println("Erreur : nombre invalide.");
-                        scanner.next(); // vider le buffer
                     }
                     break;
                 case '3':
@@ -124,6 +121,10 @@ class Executable {
         } catch (Exception e) {
             System.out.println("Erreur lors de l'execution : " + e.getMessage());
         }
+        
+        // pause pour eviter retour immediat du menu
+        System.out.println("\nAppuyez sur Entree pour continuer...");
+        scanner.nextLine();
         
         return true;
     }

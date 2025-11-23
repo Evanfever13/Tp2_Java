@@ -20,17 +20,17 @@ public class ex9 extends JFrame {
         cartesLabels = creerInterfaceGraphique();
     }
 
-    // configure la fenêtre avec dimensions, titre et fond vert type poker.
+    // configure la fenetre avec dimensions, titre et fond vert type poker.
     private void configurerFenetre() {
-        setTitle("Tirage de Cartes Aléatoire");
+        setTitle("Tirage de Cartes Aleatoire");
         setSize(650, 400);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLayout(new BorderLayout(10, 10));
         setLocationRelativeTo(null);
         getContentPane().setBackground(new Color(34, 139, 34)); // fond vert type table de poker
     }
 
-    // crée les composants graphiques et retourne les labels pour les cartes.
+    // cree les composants graphiques et retourne les labels pour les cartes.
     private JLabel[] creerInterfaceGraphique() {
         // panneau pour les cartes (disposition horizontale)
         JPanel panneauCartes = new JPanel(new GridLayout(1, NOMBRE_CARTES, 15, 15));
@@ -39,12 +39,12 @@ public class ex9 extends JFrame {
         
         JLabel[] labels = new JLabel[NOMBRE_CARTES];
         
-        // création des labels pour afficher les cartes avec bordures blanches
+        // creation des labels pour afficher les cartes avec bordures blanches
         for (int i = 0; i < NOMBRE_CARTES; i++) {
             labels[i] = new JLabel();
             labels[i].setHorizontalAlignment(SwingConstants.CENTER);
             labels[i].setPreferredSize(new Dimension(LARGEUR_CARTE, HAUTEUR_CARTE));
-            // Bordure composée : ligne blanche extérieure + padding intérieur
+            // Bordure composee : ligne blanche exterieure + padding interieur
             labels[i].setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Color.WHITE, 2),
                 BorderFactory.createEmptyBorder(5, 5, 5, 5)
@@ -59,7 +59,7 @@ public class ex9 extends JFrame {
         panneauPrincipal.setOpaque(false);
         panneauPrincipal.add(panneauCartes);
 
-        // bouton de tirage avec style personnalisé
+        // bouton de tirage avec style personnalise
         JButton boutonTirer = new JButton("Tirer 3 cartes");
         boutonTirer.setFont(new Font("Arial", Font.BOLD, 16));
         boutonTirer.setBackground(new Color(220, 20, 60)); // Rouge
@@ -92,7 +92,7 @@ public class ex9 extends JFrame {
         return labels;
     }
 
-    // tire aléatoirement 3 cartes après vérification du nombre d'images disponibles.
+    // tire aleatoirement 3 cartes apres verification du nombre d'images disponibles.
     private void tirerCartes() {
         List<File> imagesDisponibles = chargerImages();
         
@@ -105,7 +105,7 @@ public class ex9 extends JFrame {
         afficherCartes(imagesDisponibles);
     }
 
-    // charge toutes les images PNG et JPG du dossier spécifié.
+    // charge toutes les images PNG et JPG du dossier specifie.
     private List<File> chargerImages() {
         File dossier = new File(DOSSIER_IMAGES);
         List<File> images = new ArrayList<>();
@@ -126,11 +126,11 @@ public class ex9 extends JFrame {
         return images;
     }
 
-    // affiche et redimensionne les cartes sélectionnées dans l'interface.
+    // affiche et redimensionne les cartes selectionnees dans l'interface.
     private void afficherCartes(List<File> images) {
         for (int i = 0; i < NOMBRE_CARTES; i++) {
             ImageIcon icone = new ImageIcon(images.get(i).getAbsolutePath());
-            // redimensionnement avec algorithme SCALE_SMOOTH pour une meilleure qualité
+            // redimensionnement avec algorithme SCALE_SMOOTH pour une meilleure qualite
             Image imageRedimensionnee = icone.getImage().getScaledInstance(
                 LARGEUR_CARTE, HAUTEUR_CARTE, Image.SCALE_SMOOTH
             );

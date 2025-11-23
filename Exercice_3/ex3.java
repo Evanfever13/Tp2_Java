@@ -33,10 +33,10 @@ public class ex3 {
                 // boucle jusqu'a qu'il n'y a plus d'allumettes
                 int ordinateur = ia(debut, rnd, maxPerTurn);
                 debut -= ordinateur;
-                System.out.println("Ordinateur enlève: " + ordinateur);
+                System.out.println("Ordinateur enleve: " + ordinateur);
 
                 if (debut <= 1) {
-                    System.out.println("Ordinateur a gagné :-)");
+                    System.out.println("Ordinateur a gagne :-)");
                     System.out.println(nom + " a perdu :-(");
                     break;
                 }
@@ -48,10 +48,10 @@ public class ex3 {
                         1, maxPrise);
                 joueur = Math.min(joueur, debut);
                 debut -= joueur;
-                System.out.println(nom + " enlève: " + joueur);
+                System.out.println(nom + " enleve: " + joueur);
 
                 if (debut <= 1) {
-                    System.out.println(nom + " a gagné :-)");
+                    System.out.println(nom + " a gagne :-)");
                     System.out.println("Ordinateur a perdu :-(");
                     break;
                 }
@@ -61,8 +61,6 @@ public class ex3 {
         } catch (Exception e) {
             // gestion d'erreur
             System.out.println("Une erreur est survenue: " + e.getMessage());
-        } finally {
-            input.close();
         }
     }
 
@@ -79,7 +77,7 @@ public class ex3 {
     }
 
     private static int readPositiveInt(Scanner input, String prompt) {
-        // vérifie que le nombre soit rentré par le joueur est bien positive
+        // verifie que le nombre soit rentre par le joueur est bien positive
         while (true) {
             System.out.print(prompt);
             String line = input.nextLine().trim();
@@ -88,13 +86,13 @@ public class ex3 {
                 if (valeur >= 1) return valeur;
                 System.out.println("Veuillez entrer un entier >= 1.");
             } catch (NumberFormatException e) {
-                System.out.println("Entrée invalide. Entrez un entier.");
+                System.out.println("Entree invalide. Entrez un entier.");
             }
         }
     }
 
     private static int readBoundedInt(Scanner input, String prompt, int min, int max) {
-        // vérifie le nombre que le joueur rentré, si le joueur rentre un nombre supérieur ou inférieur au valeur qui doit rentrer
+        // verifie le nombre que le joueur rentre, si le joueur rentre un nombre superieur ou inferieur au valeur qui doit rentrer
         while (true) {
             System.out.print(prompt);
             String line = input.nextLine().trim();
@@ -110,7 +108,7 @@ public class ex3 {
                 }
                 return valeur;
             } catch (NumberFormatException e) {
-                System.out.println("Entrée invalide. Entrez un entier.");
+                System.out.println("Entree invalide. Entrez un entier.");
             }
         }
     }
